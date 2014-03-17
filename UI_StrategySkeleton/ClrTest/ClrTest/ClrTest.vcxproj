@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CalorieCalculation.cpp" />
     <ClCompile Include="DietMangerForm.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="NewFoodForm.cpp" />
@@ -100,6 +101,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DietMangerForm.resx">
+      <DependentUpon>DietMangerForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewFoodForm.resx">
       <DependentUpon>NewFoodForm.h</DependentUpon>
     </EmbeddedResource>
