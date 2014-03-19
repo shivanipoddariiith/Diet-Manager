@@ -13,6 +13,8 @@ class SimpleFood : public Food
 		void addDetails();
 		void storeFood();
 		void print();
+		void renewSimpleDatabase(myMap &);
+		myMap returnLatestSimpleDatabase();
 
 };
 

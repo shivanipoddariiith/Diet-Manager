@@ -1,7 +1,16 @@
 #include "headers.h"
 #include "compositeFood.h"
+#include "save.h"
 
 CompositeFood::CompositeFood(CompositeFood::myMap &composite, CompositeFood::myMap &simple)
+{
+	compositeDatabase = composite;
+	simpleDatabase = simple;
+	initialSimpleFoodDatabase = simple;
+	initialCompositeFoodDatabase =composite;
+}
+
+void CompositeFood::renewCompositeDatabase(CompositeFood::myMap &composite, CompositeFood::myMap &simple)
 {
 	compositeDatabase = composite;
 	simpleDatabase = simple;
@@ -86,4 +95,11 @@ void CompositeFood::print()
 			cout << *iter2 << endl;
 		}
 	}
+}
+
+void CompositeFood::save()
+{
+	Save save(initialSimpleFoodDatabase, initialCompositeFoodDatabase, simpleDatabase, compositeDatabase);
+	initialSimpleFoodDatabase = simpleDatabase;
+	initialCompositeFoodDatabase =compositeDatabase;
 }

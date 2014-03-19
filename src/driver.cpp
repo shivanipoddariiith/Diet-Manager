@@ -5,7 +5,6 @@
 #include "loadFood.h"
 #include "loadFoodDb.h"
 #include "loadFoodRemote.h"
-#include "save.h"
 #include "menu.h"
 
 int main()
@@ -15,18 +14,14 @@ int main()
 	
 	typedef map<string,list<string> > myMap;
 
-	LoadFoodRemote remote;
-	remote.setTotalSimpleFood(data.returnSimpleFoodData());
-	remote.loadFood();
-
-	myMap simpleDatabase = remote.returnTotalSimpleFood();
+	myMap simpleDatabase = data.returnSimpleFoodData();
 	myMap compositeDatabase = data.returnCompositeFoodData();
 
 	SimpleFood simpleFood(simpleDatabase);
 	CompositeFood compositeFood(compositeDatabase,simpleDatabase);
 
 	int selection = -1;
-	while (selection != 6)
+	while (selection != 7)
 	{
 		Menu::level1();
 
@@ -47,6 +42,8 @@ int main()
 			Menu::level13();
 			simpleFood.addDetails();
 			simpleFood.storeFood();
+			simpleDatabase = simpleFood.returnLatestSimpleDatabase();
+			compositeFood.renewCompositeDatabase(compositeDatabase,simpleDatabase);
 		}
 		else if (selection == 4)
 		{
@@ -57,9 +54,21 @@ int main()
 		else if (selection == 5)
 		{
 			Menu::level15();
-			Save save(simpleDatabase,compositeDatabase);
+			compositeFood.save();
 		}
 		else if (selection == 6)
+		{
+			Menu::level16();
+			LoadFoodRemote remote;
+			remote.setInitialSimpleFood(data.returnSimpleFoodData());
+			remote.loadFood();
+
+			myMap simpleDatabase = remote.returnTotalSimpleFood();
+
+			simpleFood.renewSimpleDatabase(simpleDatabase);
+			compositeFood.renewCompositeDatabase(compositeDatabase,simpleDatabase);
+		}
+		else if (selection == 7)
 			continue;
 		else
 		{

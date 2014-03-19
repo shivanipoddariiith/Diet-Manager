@@ -6,6 +6,11 @@ SimpleFood::SimpleFood(SimpleFood::myMap &simple)
 	simpleDatabase = simple;
 }
 
+void SimpleFood::renewSimpleDatabase(SimpleFood::myMap &simple)
+{
+	simpleDatabase = simple;
+}
+
 void SimpleFood::addDetails()
 {
 	string name;
@@ -30,8 +35,13 @@ void SimpleFood::addDetails()
 void SimpleFood::storeFood()
 {
 	simpleDatabase[id] = data;
-
 }
+
+SimpleFood::myMap SimpleFood::returnLatestSimpleDatabase()
+{
+	return simpleDatabase;
+}
+
 
 void SimpleFood::print()
 {

@@ -13,11 +13,13 @@ class CompositeFood : public Food
 		void addDetails();
 		void storeFood();
 		void print();
-		float calculateCalories(string);
-	protected:
+		void renewCompositeDatabase(myMap &, myMap &);
+		void save();
+	private:
 		myMap compositeDatabase;
-
-
+		myMap initialSimpleFoodDatabase;
+		myMap initialCompositeFoodDatabase;
+		float calculateCalories(string);
 };
 
 

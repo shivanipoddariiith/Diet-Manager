@@ -9,6 +9,7 @@ class Food
 		typedef map<string,list<string> > myMap;
 		virtual void addDetails() = 0;
 		virtual void storeFood() = 0;
+		virtual void print() = 0;
 	protected:
 		string id;
 		list<string> data;

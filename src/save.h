@@ -7,9 +7,9 @@ class Save
 {
 	public:
 		typedef map<string,list<string> > myMap;
-		Save(myMap &, myMap &);
+		Save(myMap &, myMap &, myMap &, myMap &);
 	private:
-		void saveData(string, myMap &);
+		void saveData(string, myMap &, myMap &);
 };
 
 

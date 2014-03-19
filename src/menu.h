@@ -10,6 +10,7 @@ class Menu
 		static void level13();
 		static void level14();
 		static void level15();
+		static void level16();
 };
 
 #endif

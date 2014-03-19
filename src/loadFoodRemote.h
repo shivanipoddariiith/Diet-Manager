@@ -9,7 +9,7 @@ class LoadFoodRemote : public LoadFood
 	public:
 		typedef map<string,list<string> > myMap;
 		void loadFood();
-		void setTotalSimpleFood(myMap &);
+		void setInitialSimpleFood(myMap &);
 		myMap & returnTotalSimpleFood();
 	private:
 		myMap totalSimpleFood;

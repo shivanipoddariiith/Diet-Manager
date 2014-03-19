@@ -2,3 +2,6 @@ c1|shailesh|2|s1|c2|c3|s2
 c2|yoyo|2|2|s1|c2|c3|s2
 c3|gogo|2|s1|c2|c3|s2
 c4|yippee|2|2|s1|c2|c3|s2
+c5|mix|250|mix,is,mix|s1:2|c1:2
+c6|chinese|1236|china,india|s1:10|c1:3
+c7|apple|0|pie|s1:c1

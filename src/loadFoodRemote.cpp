@@ -44,7 +44,7 @@ void LoadFoodRemote::loadFood()
 	}
 }
 
-void LoadFoodRemote::setTotalSimpleFood(myMap & initial)
+void LoadFoodRemote::setInitialSimpleFood(myMap & initial)
 {
 	totalSimpleFood = initial;
 }

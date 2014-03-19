@@ -10,7 +10,8 @@ void Menu::level1()
 	cout << "3. Add a simple food" << endl;
 	cout << "4. Add a composite food" << endl;
 	cout << "5. Save changes to food database" << endl;
-	cout << "6. Quit" << endl;
+	cout << "6. Remote add" << endl;
+	cout << "7. Quit" << endl;
 
 }
 
@@ -37,4 +38,9 @@ void Menu::level14()
 void Menu::level15()
 {	
 	cout << "Save changes to food database" << endl;
+}
+
+void Menu::level16()
+{
+	cout << "Remote add" << endl;
 }
