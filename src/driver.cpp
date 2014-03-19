@@ -1,23 +1,29 @@
 #include "headers.h"
-#include "foodStructure.h"
-#include "foodStore.h"
+#include "food.h"
+#include "simpleFood.h"
+#include "compositeFood.h"
+#include "loadFood.h"
+#include "loadFoodDb.h"
+#include "loadFoodRemote.h"
+#include "save.h"
 #include "menu.h"
 
 int main()
 {
-	char id[10] = "";
-	int nextId;
-	ifstream setting("settings");
-	setting >> id;
-	if (id == "")
-	{
-		nextId = 1;
-	}
-	else
-		nextId = atoi(id) + 1;
+	LoadFoodDb data;
+	data.loadFood();
+	
+	typedef map<string,list<string> > myMap;
 
-	setting.close();
+	LoadFoodRemote remote;
+	remote.setTotalSimpleFood(data.returnSimpleFoodData());
+	remote.loadFood();
 
+	myMap simpleDatabase = remote.returnTotalSimpleFood();
+	myMap compositeDatabase = data.returnCompositeFoodData();
+
+	SimpleFood simpleFood(simpleDatabase);
+	CompositeFood compositeFood(compositeDatabase,simpleDatabase);
 
 	int selection = -1;
 	while (selection != 6)
@@ -29,28 +35,29 @@ int main()
 		if (selection == 1)
 		{
 			Menu::level11();
-			FoodStore::displayFood();
+			simpleFood.print();
 		}
 		else if (selection == 2)
 		{
 			Menu::level12();
-			cout << "Pending..." << endl;
+			compositeFood.print();
 		}
 		else if (selection == 3)
 		{
 			Menu::level13();
-			FoodStore::addFood(nextId);
-			nextId++;
+			simpleFood.addDetails();
+			simpleFood.storeFood();
 		}
 		else if (selection == 4)
 		{
 			Menu::level14();
-			cout << "Pending..." << endl;
+			compositeFood.addDetails();
+			compositeFood.storeFood();
 		}
 		else if (selection == 5)
 		{
 			Menu::level15();
-			cout << "Pending..." << endl;
+			Save save(simpleDatabase,compositeDatabase);
 		}
 		else if (selection == 6)
 			continue;
@@ -60,9 +67,5 @@ int main()
 			continue;
 		}
 	}
-	
-	ofstream settings("settings");
-	settings << nextId;
-	settings.close();
 	
 }

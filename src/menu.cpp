@@ -9,7 +9,7 @@ void Menu::level1()
 	cout << "2. Display all composite food in database" << endl;
 	cout << "3. Add a simple food" << endl;
 	cout << "4. Add a composite food" << endl;
-	cout << "5. Import from remote source" << endl;
+	cout << "5. Save changes to food database" << endl;
 	cout << "6. Quit" << endl;
 
 }
@@ -36,5 +36,5 @@ void Menu::level14()
 
 void Menu::level15()
 {	
-	cout << "Add from a remote source" << endl;
+	cout << "Save changes to food database" << endl;
 }
