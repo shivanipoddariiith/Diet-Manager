@@ -2,7 +2,7 @@
 #define LOADFOOD_H
 
 #include "headers.h"
-#include "SimpleFood.h"
+#include "simpleFood.h"
 #include "compositeFood.h"
 
 class LoadFood

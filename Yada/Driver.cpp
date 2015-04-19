@@ -1,6 +1,6 @@
 #include <iostream>
 #include "UsersFile.h"
-#include "header.h"
+#include "Header.h"
 #include "loadFood.h"
 #include "loadFoodDb.h"
 #include "simpleFood.h"
@@ -8,7 +8,7 @@
 #include "save.h"
 #include "loadFoodRemote.h"
 #include "CalorieCalculation.h"
-#include "FoodStore.h"
+#include "foodStore.h"
 #include "UserInterface.h"
 using namespace std;
 
@@ -46,7 +46,7 @@ int main()
 	{
 		cout<<"Yet Another Diet Manager";
 		cout<<"login:";
-		cin>>username;
+	cin>>username;
 		cout<<"password:";
 		cin>>password;
 

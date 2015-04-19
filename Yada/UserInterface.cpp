@@ -15,7 +15,7 @@
 #include "save.h"
 #include "loadFoodRemote.h"
 #include "CalorieCalculation.h"
-#include "FoodStore.h"
+#include "foodStore.h"
 
 LoadFoodDb data;
 

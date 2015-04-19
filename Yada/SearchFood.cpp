@@ -10,6 +10,7 @@
 void Search::search(string keywords)
 {
 	cout<<"Searching In Food"<<endl;
+	OrSearch(keywords);
 }
 
 void Search::OrSearch(string keywords)
@@ -18,8 +19,8 @@ void Search::OrSearch(string keywords)
 	data.loadFood();
 
 	typedef map<string,list<string> > myMap;
-	myMap simpleDatabase = data.returnSimpleFoodData();
-	myMap compositeDatabase = data.returnCompositeFoodData();
+	myMap simpleDatabase = data.returnSimpleFoodKeyword();
+	myMap compositeDatabase = data.returnCompositeFoodKeyword();
 
 	SimpleFood simpleFood(simpleDatabase);
 	CompositeFood compositeFood(compositeDatabase,simpleDatabase);
@@ -29,7 +30,7 @@ void Search::OrSearch(string keywords)
 	map<string,list<string> >::iterator it;
 	list<string> searchlist;
 	list<string>::iterator search_it;
-	bool flag=false;
+	bool flag1=false;
 	for(it=simpleDatabase.begin();it!=simpleDatabase.end();++it)
 	{
 		searchlist = it->second;
@@ -37,14 +38,31 @@ void Search::OrSearch(string keywords)
 		{
 			if(search_it->compare(keywords)==0)
 			{
-				flag=true;
-				cout<<"found in "<<it->first;
+				flag1=true;
+				cout<<"found in Simple Food at "<<it->first;
 				cout<<endl;
 			}
 		}
 	}
 
-	if(!flag)
+	/*Seach in compositeFoodDb*/
+
+	bool flag2=false;
+	for(it=compositeDatabase.begin();it!=compositeDatabase.end();++it)
+	{   
+		searchlist = it->second;
+		for(search_it=searchlist.begin();search_it!=searchlist.end();++search_it)
+		{   
+			if(search_it->compare(keywords)==0)
+			{   
+				flag2=true;
+				cout<<"found in Composite Food at"<<it->first;
+				cout<<endl;
+			}   
+		}   
+	} 
+
+	if(!flag1 && !flag2)
 	{
 		cout<<"Not Found Anywhere!"<<endl;
 	}

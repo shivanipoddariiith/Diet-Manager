@@ -22,7 +22,10 @@ void LoadFoodDb::load(int source, string sourceName)
 		// cout << "id: " << key << "\n";
 
 		stringstream stream(value);
+		stringstream stream1(value);
+		stringstream stream2(value);
 		string word;
+		string keyword;
 		list<string> valueList;
 		while (getline(stream, word, '|'))
 			// cout << word << endl;
@@ -31,11 +34,38 @@ void LoadFoodDb::load(int source, string sourceName)
 		if (source == 1)
 		{
 			simpleFood[key] = valueList;
+
+			int count=0;
+			list<string> keyList;
+			while (getline(stream1, keyword, '|') && count<3){
+				//cout << word << endl;
+				count++;
+			}
+			stringstream keyStream(keyword);
+			string keys;
+			while (getline(keyStream, keys, ','))
+				keyList.push_back(keys);
+
+			simpleFoodKeyword[key]= keyList;
 			totalSimpleFood++;
 		}
 		else if (source == 2)
 		{
 			compositeFood[key] = valueList;
+			
+			int count=0;
+			list<string> keyList;
+			while (getline(stream2, keyword, '|') && count<1){
+				//cout << word << endl;
+				count++;
+			}
+			stringstream keyStream(keyword);
+			string keys;
+			while (getline(keyStream, keys, ','))
+				keyList.push_back(keys);
+			
+			compositeFoodKeyword[key]= keyList;
+			
 			totalCompositeFood++;
 		}
 	}
@@ -59,6 +89,16 @@ LoadFoodDb::myMap &LoadFoodDb::returnSimpleFoodData()
 LoadFoodDb::myMap &LoadFoodDb::returnCompositeFoodData()
 {
 	return compositeFood;
+}
+
+LoadFoodDb::myMap &LoadFoodDb::returnSimpleFoodKeyword()
+{
+	        return simpleFoodKeyword;
+}
+
+LoadFoodDb::myMap &LoadFoodDb::returnCompositeFoodKeyword()
+{
+	                return compositeFoodKeyword;
 }
 
 int LoadFoodDb::returnTotalSimpleFood()
